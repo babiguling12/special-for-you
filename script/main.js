@@ -1,23 +1,9 @@
 window.addEventListener('load', () => {
-    // SweetAlert untuk menanyakan apakah ingin memutar musik
-    Swal.fire({
-        title: 'Do you want to play music in the background?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Memutar musik jika tombol Yes ditekan
-            document.querySelector('.song').play();
-        }
         
         // Tampilkan form verifikasi
         document.getElementById('step1').style.display = 'block';
     });
-});
+
 
 // Step 1: Verifikasi Nama
 document.getElementById('verificationName').addEventListener('submit', function(e) {
@@ -27,7 +13,7 @@ document.getElementById('verificationName').addEventListener('submit', function(
     const errorMessage = document.getElementById('error-message');
 
     // Validasi nama
-    const validNames = ['davina', 'davina damajaya'];
+    const validNames = ['davina', 'davina damajaya', 'putu pande davina damajaya'];
 
     // Jika nama tidak valid, tampilkan pesan error
     if (!validNames.includes(nameInput.toLowerCase())) {
@@ -85,6 +71,10 @@ document.getElementById('verification').addEventListener('submit', function(e) {
         document.getElementById('step1').style.display = 'none';  // Sembunyikan step 1
         document.getElementById('step2').style.display = 'none';  // Sembunyikan step 2
         document.querySelector('.form-container').style.display = 'none';
+
+        // jalankan musik
+        document.querySelector('.song').play();
+
         // Jalankan animasi
         animationTimeline();
     });
@@ -198,7 +188,7 @@ const animationTimeline = () => {
     })
     .to(".idea-3", 0.7, ideaTextTransLeave, "+=2.5")
     .from(".idea-4", 0.7, ideaTextTrans)
-    .to(".idea-4", 0.7, ideaTextTransLeave, "+=2.5")
+    .to(".idea-4", 0.7, ideaTextTransLeave, "+=1.5")
     .from(
         ".idea-5",
         0.7, {
@@ -209,7 +199,7 @@ const animationTimeline = () => {
             z: 10,
             opacity: 0,
         },
-        "+=1.5"
+        "+=1"
     )
     .to(
         ".idea-5 span",
@@ -217,7 +207,7 @@ const animationTimeline = () => {
             rotation: 90,
             x: 8,
         },
-        "+=1.4"
+        "+=1"
     )
     .to(
         ".idea-5",
@@ -284,7 +274,7 @@ const animationTimeline = () => {
             // scale: 0.3,
             rotation: 150,
             skewX: "30deg",
-            ease: Elastic.easeOut.config(1, 0.5),
+            ease: Elastic.easeOut.config(1, 0.3),
         },
         0.1
     )
